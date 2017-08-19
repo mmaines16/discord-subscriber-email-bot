@@ -1,0 +1,25 @@
+{
+    "bot": {
+        "token": "MzQ2Nzc1MDMxNTk1OTI1NTIy.DHOu8w.Aso5iithGrvfXHFt4ez-ixi8dss",
+        "client_id": "346775031595925522",
+        "client_secret": "pmcV4au0gEra06-j-ayy_2KvOeTaKfke",
+        "callback": "http://127.0.0.1:8000/auth/discord/callback",
+        "scopes": ["email", "identify"]
+    },
+    "server": {
+        "name": "Local Bot Test",
+        "defaultChannel": "general",
+        "roles": {
+            "basic_role": "subscriber_registering",
+            "verified_role": "subscriber",
+            "return_role": "subscriber_return"
+        },
+        "memberTagPrefix": "u-discord",
+        "registerURL": "http://bit.ly/test-bot-register"
+    },
+    "email_list": {
+        "provider": "market_hero", 
+        "api_key": "e7e512aaa2bd5b31253a082bb0171523ddfc117ec8d5e85abf024fa87a2b5286",
+        "tag": "$subscriber"
+    }
+}

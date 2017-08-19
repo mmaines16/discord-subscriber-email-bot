@@ -1,0 +1,25 @@
+{
+  "name": "discord-subscriber-email-bot",
+  "version": "1.0.0",
+  "description": "Discord Bot that will add/tag users, that are added to a discord server with a role, to a email list",
+  "main": "bot.js",
+  "scripts": {
+    "test:controllers": "node ./tests/test-controllers.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mason Maines",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "btoa": "^1.1.2",
+    "cookie-parser": "^1.4.3",
+    "discord.js": "^11.1.0",
+    "express": "^4.15.4",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.5",
+    "passport": "^0.4.0",
+    "passport-discord": "^0.1.2",
+    "promise": "^8.0.1",
+    "simple-oauth2": "^1.3.0"
+  }
+}

@@ -1,0 +1,14 @@
+<h1>Hey thanks {{user.username}}! Just one last step :) !</h1>
+
+<form method="POST" action="/tag-email">
+    <input type="text" name="firstName" placeholder="First Name Here"/>
+    <input type="text" name="lastName" placeholder="Last Name Here"/>
+
+    <h3>Is this the email you want to use?</h3>
+    <input type="email" name="email" value="{{user.email}}" />
+
+    <input type="test" name="userId" value="{{user.id}}" hidden="true"/>
+    <input type="test" name="username" value="{{user.username}}" hidden="true"/>
+
+    <input type="submit" value="Unlock My Access to {{serverName}}!" /> 
+</form>
