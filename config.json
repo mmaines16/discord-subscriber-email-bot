@@ -3,7 +3,8 @@
         "token": "MzQ2Nzc1MDMxNTk1OTI1NTIy.DHOu8w.Aso5iithGrvfXHFt4ez-ixi8dss",
         "client_id": "346775031595925522",
         "client_secret": "pmcV4au0gEra06-j-ayy_2KvOeTaKfke",
-        "callback": "http://127.0.0.1:8000/auth/discord/callback",
+        "callback": "http://162.243.24.208/auth/discord/callback",
+        "development_callback": "http://127.0.0.1:8000/auth/discord/callback",
         "scopes": ["email", "identify"]
     },
     "server": {
