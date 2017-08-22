@@ -4,6 +4,9 @@
   "description": "Discord Bot that will add/tag users, that are added to a discord server with a role, to a email list",
   "main": "bot.js",
   "scripts": {
+    "start:dev": "cross-env NODE_ENV=DEVELOPMENT node bot.js",
+    "start": "cross-env NODE_ENV=PRODUCTION node bot.js",
+    "start:production": "p2m start bot.js",
     "test:controllers": "node ./tests/test-controllers.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

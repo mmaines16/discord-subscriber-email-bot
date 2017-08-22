@@ -1,3 +1,5 @@
+'use strict';
+
 const Discord = require('discord.js');
 const Express = require('express');
 const axios = require('axios');
@@ -48,21 +50,34 @@ server.use(Express.static(path.join(__dirname, 'public')));
 // =============================== ROLE MANAGEMENT =========================================
 
 client.on('guildMemberUpdate', (oldMember, newMember) => {
+    
+    //Database for resub and unsub lookup
+    
+    //If  old Member has sub already the add resub tag in markethero and ignore register
+    
+    // If old member has unsub then tag market hero as resub and pull info from database
 
     let guild = client.guilds.find("name", config.server.name);
     let defaultChannel = guild.channels.find("name", config.server.defaultChannel);
     let subscriberRole = guild.roles.find("name", config.server.roles.basic_role);
+    let unsubscribeRole = guild.roles.find("name", config.server.unsubscribe_role);
     
     if(newMember.roles.find("name", subscriberRole.name) && !oldMember.roles.find("name", subscriberRole.name)) {
+        
         setTimeout(function() {
+            const registerUrl = process.env.NODE_ENV=DEVELOPMENT ? config.server.registerDEVURL : config.server.registerURL;
+            
             defaultChannel.send(`
-                Welcome to ${config.server.name}! Please go to the following url ${config.server.registerURL} or use the !register command to unlock your membership. 
+                Welcome to ${config.server.name}! Please go to the following url ${registerURL} or use the !register command to unlock your membership. 
                 
                 You will be asked to provide a valid email address and some basic information. This is neccessary as it will allow me to provide you with the best content and service as well as make you eligible for special perks (including alpha access to future programs)
                 
                 I apologize for the inconvience, and thank you for you cooperation!
             `, {reply: newMember});
         }, 3500);
+    }
+    else if(!newMember.roles.find("name", subscriberRole.name) && oldMember.roles.find("name", subscriberRole.name)) {
+        
     }
 });
 
@@ -186,7 +201,7 @@ passport.use(new DiscordStrategy(
     {
         clientID: config.bot.client_id,
         clientSecret: config.bot.client_secret,
-        callbackURL: config.bot.callback,
+        callbackURL: process.env.NODE_ENV=DEVELOPMENT ? config.bot.dev_callback : config.bot.callback,
         scope: config.bot.scopes
     },
     function(accessToken, refreshToken, profile, cb) {
@@ -198,9 +213,13 @@ passport.use(new DiscordStrategy(
 ));
 
 
-server.get('/test', passport.authenticate('discord', {session: false}), function(req, res) {
+server.get('/', passport.authenticate('discord', {session: false}), function(req, res) {
     res.render('index2', {});
 })
+
+server.get('/test', passport.authenticate('discord', {session: false}), function(req, res) {
+    res.render('index3', {});
+});
 
 server.get('/success', function(req, res) {
     
