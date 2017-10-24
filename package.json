@@ -6,23 +6,33 @@
   "scripts": {
     "start:dev": "cross-env NODE_ENV=DEVELOPMENT node bot.js",
     "start": "cross-env NODE_ENV=PRODUCTION node bot.js",
-    "start:production": "p2m start bot.js",
+    "start:production": "pm2 start bot.js",
     "test:controllers": "node ./tests/test-controllers.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Mason Maines",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.17.0",
     "body-parser": "^1.17.2",
     "btoa": "^1.1.2",
+    "bufferutil": "^3.0.2",
     "cookie-parser": "^1.4.3",
+    "discord": "^0.8.2",
     "discord.js": "^11.1.0",
+    "erlpack": "github:hammerandchisel/erlpack",
     "express": "^4.15.4",
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.5",
+    "libsodium-wrappers": "^0.5.4",
+    "node-opus": "^0.2.6",
+    "opusscript": "0.0.3",
     "passport": "^0.4.0",
     "passport-discord": "^0.1.2",
     "promise": "^8.0.1",
-    "simple-oauth2": "^1.3.0"
+    "request": "^2.83.0",
+    "simple-oauth2": "^1.3.0",
+    "sodium": "^2.0.1",
+    "uws": "^0.14.5"
   }
 }

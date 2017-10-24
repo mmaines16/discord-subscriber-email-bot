@@ -1,8 +1,8 @@
 {
     "bot": {
-        "token": "MzQ2Nzc1MDMxNTk1OTI1NTIy.DHOu8w.Aso5iithGrvfXHFt4ez-ixi8dss",
+        "token": "MzQ2Nzc1MDMxNTk1OTI1NTIy.DNFB6Q.-HGPaJsbkD8PQNiFzf2QdoLHpkI",
         "client_id": "346775031595925522",
-        "client_secret": "pmcV4au0gEra06-j-ayy_2KvOeTaKfke",
+        "client_secret": "y36DxFM-IBLzOxetTKVwxZtkxF_B3LdX",
         "callback": "http://162.243.24.208/auth/discord/callback",
         "dev_callback": "http://127.0.0.1:8000/auth/discord/callback",
         "scopes": ["email", "identify"]
@@ -16,7 +16,7 @@
             "unsubscribe_role": "unsubscribed"
         },
         "memberTagPrefix": "u-discord",
-        "registerURL": "http://bit.ly/test-bot-register",
+        "registerURL": "http://bit.ly/Test-Bot-Register",
         "registerDEVURL": "http://127.0.0.1:8000/"
     },
     "email_list": {

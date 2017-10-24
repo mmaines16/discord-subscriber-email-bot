@@ -60,12 +60,12 @@ client.on('guildMemberUpdate', (oldMember, newMember) => {
     let guild = client.guilds.find("name", config.server.name);
     let defaultChannel = guild.channels.find("name", config.server.defaultChannel);
     let subscriberRole = guild.roles.find("name", config.server.roles.basic_role);
-    let unsubscribeRole = guild.roles.find("name", config.server.unsubscribe_role);
+    let unsubscribeRole = guild.roles.find("name", config.server.roles.unsubscribe_role);
     
     if(newMember.roles.find("name", subscriberRole.name) && !oldMember.roles.find("name", subscriberRole.name)) {
         
         setTimeout(function() {
-            const registerUrl = process.env.NODE_ENV=DEVELOPMENT ? config.server.registerDEVURL : config.server.registerURL;
+            const registerURL = process.env.NODE_ENV="PRODUCTION" ? config.server.registerURL : config.server.registerDEVURL;
             
             defaultChannel.send(`
                 Welcome to ${config.server.name}! Please go to the following url ${registerURL} or use the !register command to unlock your membership. 
@@ -77,7 +77,7 @@ client.on('guildMemberUpdate', (oldMember, newMember) => {
         }, 3500);
     }
     else if(!newMember.roles.find("name", subscriberRole.name) && oldMember.roles.find("name", subscriberRole.name)) {
-        
+        //unsubscribe
     }
 });
 
@@ -201,7 +201,7 @@ passport.use(new DiscordStrategy(
     {
         clientID: config.bot.client_id,
         clientSecret: config.bot.client_secret,
-        callbackURL: process.env.NODE_ENV=DEVELOPMENT ? config.bot.dev_callback : config.bot.callback,
+        callbackURL: process.env.NODE_ENV="DEVELOPMENT" ? config.bot.dev_callback : config.bot.callback,
         scope: config.bot.scopes
     },
     function(accessToken, refreshToken, profile, cb) {
