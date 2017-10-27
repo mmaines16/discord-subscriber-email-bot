@@ -312,11 +312,13 @@ client.on('message', message => {
 // ==================================== OAUTH2 Server ========================================
 
 // Configure Passport and Discord Strategy
+
+let callbackURL = process.env.NODE_ENV=="PRODUCTION" ? config.bot.callback : config.bot.dev_callback;
 passport.use(new DiscordStrategy(
     {
         clientID: config.bot.client_id,
         clientSecret: config.bot.client_secret,
-        callbackURL: process.env.NODE_ENV=="PRODUCTION" ? config.bot.callback : config.bot.dev_callback,
+        callbackURL: callbackURL,
         scope: config.bot.scopes
     },
     function(accessToken, refreshToken, profile, cb) {
