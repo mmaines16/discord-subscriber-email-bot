@@ -417,9 +417,10 @@ client.on('ready', () => {
   console.log('I am ready!');
 });
 
+const port = process.env.NODE_ENV="DEVELOPMENT" ? 8000 : 80;
 
-server.listen(8000, function() {
-    console.log('server running on port 8000');
+server.listen(port, function() {
+    console.log(`server running on port ${port}`);
 });
 
 client.login(config.bot.token);
