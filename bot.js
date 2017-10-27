@@ -374,7 +374,7 @@ server.post('/tag-email', function(req, res) {
     /* 
      * use api check if email is in list
     */
-    if(EmailListController.isLeadInList) {
+    if(EmailListController.isLeadInList == true) {
         // If Lead is in the list just tag the lead 
         EmailListController.TagLead(lead, [config.email_list.tag, usernameTag], config.email_list.api_key)
         .then(function(response) {
