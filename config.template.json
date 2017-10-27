@@ -1,0 +1,28 @@
+{
+    "bot": {
+        "token": "place Discord bot token here",
+        "client_id": "place Discord bot client id here",
+        "client_secret": "place Discord client secret here",
+        "callback": "http://production-server.domain.com/auth/discord/callback",
+        "dev_callback": "http://localhost:8000/auth/discord/callback",
+        "scopes": ["email", "identify"]
+    },
+    "server": {
+        "name": "Discord Server Name",
+        "defaultChannel": "channel where bot posts register messages",
+        "roles": {
+            "basic_role": "role from twitch.tv",
+            "verified_role": "full subscriber role",
+            "unsubscribe_role": "role for unsubscribed users"
+        },
+        "memberTagPrefix": "u-discord",
+        "registerURL": "http://production-server.domain.com/",
+        "registerDEVURL": "http://localhost:8000"
+    },
+    "email_list": {
+        "provider": "active_campaign",
+        "api_url": "active_campaign.server.api-url.com",
+        "api_key": "active campaign api key",
+        "tag": "$subscriber"
+    }
+}

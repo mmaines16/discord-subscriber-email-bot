@@ -1,6 +1,7 @@
 const Promise = require('promise');
 const request = require('request');
 const ActiveCampaign = require('ActiveCampaign');
+const apiURL = require('../config.json').email_list.api_url;
 
 // ============ Helper Functions ================
 const formatTags = function(tags) {
@@ -24,7 +25,7 @@ const formatTags = function(tags) {
 // ============ Controller Functions ===============
 exports.CreateAndTagLead = function(lead, tags, apiKey) {
     return new Promise(function(resolve, reject) {
-        const ac = new ActiveCampaign("https://newsocialadvantage.api-us1.com", apiKey);
+        const ac = new ActiveCampaign(apiURL, apiKey);
         
         ac.credentials_test().then(function(result) {
             if(result.success) {
@@ -61,7 +62,7 @@ exports.CreateAndTagLead = function(lead, tags, apiKey) {
 
 exports.TagLead = function(lead, tags, apiKey) {
     return new Promise(function(resolve, reject) {
-        const ac = new ActiveCampaign("https://newsocialadvantage.api-us1.com", apiKey);
+        const ac = new ActiveCampaign(apiURL, apiKey);
         
         ac.credentials_test().then(function(result) {
             if(result.success) {
@@ -95,7 +96,7 @@ exports.TagLead = function(lead, tags, apiKey) {
 
 exports.RemoveTag = function(lead, tags, apiKey) {
 return new Promise(function(resolve, reject) {
-        const ac = new ActiveCampaign("https://newsocialadvantage.api-us1.com", apiKey);
+        const ac = new ActiveCampaign(apiURL, apiKey);
         
         ac.credentials_test().then(function(result) {
             if(result.success) {
@@ -126,6 +127,8 @@ return new Promise(function(resolve, reject) {
 };
 
 exports.isLeadInList = function(lead, apiKey) {
+    const ac = new ActiveCampaign(apiURL, apiKey);
+    
     const contact_exists = ac.api(`contact/view?email=${lead.email}`, {});
     contact_exists.then(function(result) {
         // Contact Exists
@@ -138,7 +141,7 @@ exports.isLeadInList = function(lead, apiKey) {
 
 exports.GetLead = function(lead, apiKey) {
     return new Promise(function(resolve, reject) {
-        const ac = new ActiveCampaign("https://newsocialadvantage.api-us1.com", apiKey);
+        const ac = new ActiveCampaign(apiURL, apiKey);
         
         ac.credentials_test().then(function(result) {
             if(result.success) {
@@ -167,7 +170,7 @@ exports.GetLead = function(lead, apiKey) {
 
 exports.GetLeadByTag = function(tag, apiKey) {
     return new Promise(function(resolve, reject) {
-        const ac = new ActiveCampaign("https://newsocialadvantage.api-us1.com", apiKey);
+        const ac = new ActiveCampaign(apiURL, apiKey);
         
         ac.credentials_test().then(function(result) {
             if(result.success) {
