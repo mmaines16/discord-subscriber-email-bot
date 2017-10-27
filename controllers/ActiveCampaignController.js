@@ -1,6 +1,6 @@
 const Promise = require('promise');
 const request = require('request');
-const ActiveCampaign = require('ActiveCampaign');
+const ActiveCampaign = require('activecampaign');
 const apiURL = require('../config.json').email_list.api_url;
 
 // ============ Helper Functions ================
