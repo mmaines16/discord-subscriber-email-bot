@@ -124,7 +124,7 @@ client.on('guildMemberUpdate', (oldMember, newMember) => {
             
             // WAIT FOR A BIT THEN SEND USER A MESSAGE IN DISCORD VIA DEFAULT DISCORD CHANNEL
             setTimeout(function() {
-                const registerURL = process.env.NODE_ENV="PRODUCTION" ? config.server.registerURL : config.server.registerDEVURL;
+                const registerURL = process.env.NODE_ENV=="PRODUCTION" ? config.server.registerURL : config.server.registerDEVURL;
                 
                 defaultChannel.send(`
                     Welcome to ${config.server.name}! Please go to the following url ${registerURL} or use the !register command to unlock your membership. 
@@ -316,7 +316,7 @@ passport.use(new DiscordStrategy(
     {
         clientID: config.bot.client_id,
         clientSecret: config.bot.client_secret,
-        callbackURL: process.env.NODE_ENV="DEVELOPMENT" ? config.bot.dev_callback : config.bot.callback,
+        callbackURL: process.env.NODE_ENV=="PRODUCTION" ? config.bot.callback : config.bot.dev_callback,
         scope: config.bot.scopes
     },
     function(accessToken, refreshToken, profile, cb) {
@@ -417,7 +417,7 @@ client.on('ready', () => {
   console.log('I am ready!');
 });
 
-const port = process.env.NODE_ENV="DEVELOPMENT" ? 8000 : 80;
+const port = process.env.NODE_ENV=="PRODUCTION" ? 80 : 8000;
 
 server.listen(port, function() {
     console.log(`server running on port ${port}`);
